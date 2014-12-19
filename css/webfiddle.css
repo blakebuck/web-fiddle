@@ -1,0 +1,43 @@
+body {
+    margin: 0;
+    overflow: hidden;
+    padding: 0;
+}
+html {
+    overflow-y: hidden;
+}
+iframe {
+    height: 100%;
+    width: 100%;
+}
+#outputLink:link,
+#outputLink:visited,
+#outputLink:hover,
+#outputLink:active {
+    color: #ffffff;
+    text-decoration: none;
+}
+#tab-bar {
+    background: royalblue;
+    color: white;
+}
+#tab-bar ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+#tab-bar ul li {
+    display: inline-block;
+    cursor: pointer;
+    padding: 10px;
+}
+.viewBtn.active {
+    color: yellow;
+}
+.viewBtn.active:before {
+    content: "\2022  "; /* Bullet Character */
+}
+#views {
+    position: relative;
+    width: 100%;
+}

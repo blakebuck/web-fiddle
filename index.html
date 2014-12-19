@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="css/webfiddle.css" />
+    </head>
+    <body>
+        <!-- Link Bar -->
+        <div id="tab-bar">
+            <ul>
+                <li class="viewBtn" data-value="html">HTML</li>
+                <li class="viewBtn" data-value="js">JavaScript</li>
+                <li class="viewBtn" data-value="css">CSS</li>
+                <li class="viewBtn" data-value="preview">Preview</li>
+                <li><a id="outputLink" download="output.html">Save Output</a></li>
+            </ul>
+        </div>
+        <!-- Views -->
+        <div>
+            <div class="view" data-value="html">
+                <div id="editor-html" class="editor"></div>
+            </div>
+            <div class="view" data-value="js">
+                <div id="editor-js" class="editor"></div>
+            </div>
+            <div class="view" data-value="css">
+                <div id="editor-css" class="editor"></div>
+            </div>
+            <div class="view" data-value="preview">
+                <div>
+                    <iframe id="preview" frameborder="0" src="iframe.html"></iframe>
+                </div>
+            </div>
+        </div>
+        <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+        <script src="js/libs/ace/src-min/ace.js"></script>
+        <script src="js/webfiddle.js"></script>
+    </body>
+</html>
