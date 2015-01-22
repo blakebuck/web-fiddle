@@ -1,3 +1,7 @@
+<script src="js/libs/ace/src-min/ace.js"></script>
 <script>
-    document.write(localStorage.getItem("output")); // Retrieve locally stored output
+    if (localStorage.getItem("output") != null){
+        document.write(localStorage.getItem("output")); // Retrieve locally stored output
+        localStorage.removeItem("output");
+    }
 </script>
