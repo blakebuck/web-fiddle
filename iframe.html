@@ -1,7 +1,23 @@
-<script src="js/libs/ace/src-min/ace.js"></script>
-<script>
-    if (localStorage.getItem("output") != null){
-        document.write(localStorage.getItem("output")); // Retrieve locally stored output
-        localStorage.removeItem("output");
-    }
-</script>
+<!DOCTYPE html>
+<html>
+    <head>
+        <script>
+            function displayContent(contentType){
+                if (localStorage.getItem(contentType) != null){
+                    document.write(localStorage.getItem(contentType)); // Retrieve locally stored output
+                    localStorage.removeItem(contentType);
+                }
+            }
+            displayContent("css");
+        </script>
+    </head>
+    <body>
+        <script>
+            displayContent("html");
+        </script>
+        <script src="js/libs/jquery-1.11.2.min.js"></script>
+        <script>
+            displayContent("js");
+        </script>
+    </body>
+</html>

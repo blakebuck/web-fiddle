@@ -13,6 +13,9 @@ $(function(){
     // Bind click handlers for top link/buttons
     $(".viewBtn").click(viewBtnClick);
     $("#outputLink").click(outputLinkClick);
+
+    // Give focus to the HTML editor
+    htmlEditor.focus();
 });
 
 /**
@@ -22,8 +25,7 @@ $(function(){
  * and document.writes() to give preview
  */
 function generatePreview(){
-    var output = prepareContent();
-    localStorage.setItem("output", output);
+    prepareContent();
     var iframe = $("#preview");
     iframe.attr('src', iframe.attr('src'));
 }
@@ -66,23 +68,42 @@ function makeOutputFile(output){
 
     return outputFile;
 }
+/**
+ * Creates a the HTML for the output page.
+ * Spaces are intentional in the strings for spacing in output.
+ * @returns {string} page   Contains the the HTML for the output page.
+ */
+function makePage(){
+    var page = "<!DOCTYPE html>\n<html>\n    <head>\n        ";
+        page += localStorage.getItem("css");
+        page += "\n    <\/head>\n    <body>\n        ";
+        page += localStorage.getItem("html");
+        page += "\n        <script src=\"http://code.jquery.com/jquery-1.11.2.min.js\"></script>\n        ";
+        page += localStorage.getItem("js");
+        page += "\n    <\/body>\n<\/html>";
+    return page;
+}
 
 /**
  * Handles the "Save Output" link
  */
 function outputLinkClick(){
-    $(this).attr("href", makeOutputFile(prepareContent()));
+    prepareContent();
+    var content = makePage();
+    $(this).attr("href", makeOutputFile(content));
 }
 
 /**
- * Concatenates & Wraps Inputted Code
+ * Wraps Inputted Code and saves it to localStorage
  * @returns string CSS wrapped in <style> tag + HTML + JS wrapped in <script> tag
  */
 function prepareContent(){
-    var content = "<style>" + cssEditor.getValue() + "</style>";
-    content += htmlEditor.getValue();
-    content += "<script>" + jsEditor.getValue() + "<\/script>";
-    return content;
+    var css = "<style>\n" + cssEditor.getValue() + "\n</style>";
+    var html = htmlEditor.getValue();
+    var js = "<script>\n" + jsEditor.getValue() + "\n<\/script>";
+    localStorage.setItem("css", css);
+    localStorage.setItem("html", html);
+    localStorage.setItem("js", js);
 }
 
 /**
@@ -113,4 +134,7 @@ function viewBtnClick(){
 
     // Show request view
     $(".view[data-value='" + view + "']").show();
+
+    // Give focus to the editor
+    window[view + "Editor"].focus();
 }
