@@ -75,6 +75,7 @@ function makeOutputFile(output){
  */
 function makePage(){
     var page = "<!DOCTYPE html>\n<html>\n    <head>\n        ";
+        page += "<link rel=\"stylesheet\" href=\"https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css\">";
         page += localStorage.getItem("css");
         page += "\n    <\/head>\n    <body>\n        ";
         page += localStorage.getItem("html");
